@@ -130,4 +130,13 @@ class CliTest extends TestCase {
 
     }
 
+    public function testNameCommandReturnsCorrectly() {
+
+        $this->expectOutputString('OneHundred' . PHP_EOL);
+        $args = ["./pecli","--name","100"];
+        $cli = new ProjectEuler\Cli($args);
+        $cli->run();
+
+    }
+
 }

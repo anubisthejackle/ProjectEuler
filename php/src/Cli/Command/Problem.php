@@ -3,7 +3,7 @@ namespace ProjectEuler\Cli\Command;
 
 use ProjectEuler\Cli\Command;
 
-class Problem implements Command {
+class Problem extends Command {
 
     protected $args;
 
@@ -42,23 +42,10 @@ class Problem implements Command {
         
     }
 
-    private function _generateProblem($problem) {
+    protected function _generateProblem($problem) {
         $word = $this->convertIntegerToWord($problem);
         $class = 'ProjectEuler\\Problem\\' . $this->convertWordToClassName($word);
         return new $class();
-    }
-
-    public function convertIntegerToWord($number){
-        $locale = 'en_US';
-        $fmt = numfmt_create($locale, \NumberFormatter::SPELLOUT);
-        $in_words = numfmt_format($fmt, $number);
-        return ucfirst($in_words);
-    }
-
-    public function convertWordToClassName($word){
-        $word = ucwords($word);
-        $word = str_replace([' ','-'], '', $word);
-        return $word;
     }
 
 }

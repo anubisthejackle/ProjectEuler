@@ -19,7 +19,7 @@ class Cli {
         $getopt = new GetOpt();
         $getopt->addOptions([
             new Option('p', 'problem', GetOpt::REQUIRED_ARGUMENT),
-            new Option('n', 'name', GetOpt::NO_ARGUMENT),
+            new Option('n', 'name', GetOpt::REQUIRED_ARGUMENT),
         ]);
 
         $getopt->process($args);
