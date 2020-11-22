@@ -8,7 +8,7 @@ class OneTest extends TestCase {
 
     public function testMultiplesOf3And5() {
 
-        $problem = new \ProjectEuler\Problems\One();
+        $problem = new \ProjectEuler\Problem\One();
         $this->assertEquals(23, $problem->sumMultiplesOf3And5Below(10));
 
     }

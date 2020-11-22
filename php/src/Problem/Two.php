@@ -1,6 +1,6 @@
 <?php
 
-namespace ProjectEuler\Problems;
+namespace ProjectEuler\Problem;
 
 use ProjectEuler\Problem;
 

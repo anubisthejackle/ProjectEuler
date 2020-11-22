@@ -37,7 +37,7 @@ class Cli {
 
     public function getProblem(){
         $word = $this->convertIntegerToWord($this->args['problem']);
-        $class = 'ProjectEuler\\Problems\\' . $this->convertWordToClassName($word);
+        $class = 'ProjectEuler\\Problem\\' . $this->convertWordToClassName($word);
 
         return new $class();
     }

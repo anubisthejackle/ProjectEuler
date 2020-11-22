@@ -42,14 +42,14 @@ class CliTest extends TestCase {
 
         $problem = $cli->getProblem();
 
-        $this->assertInstanceOf(ProjectEuler\Problems\One::class, $problem);
+        $this->assertInstanceOf(ProjectEuler\Problem\One::class, $problem);
 
         $args = ["./pecli","--problem","2"];
         $cli = new ProjectEuler\Cli($args);
 
         $problem = $cli->getProblem();
 
-        $this->assertInstanceOf(ProjectEuler\Problems\Two::class, $problem);
+        $this->assertInstanceOf(ProjectEuler\Problem\Two::class, $problem);
 
     }
 
