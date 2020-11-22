@@ -1,15 +1,10 @@
 <?php
 
+namespace ProjectEuler\Test\Problem;
+
 use PHPUnit\Framework\TestCase;
 
-class ProblemsTest extends TestCase {
-
-    public function testMultiplesOf3And5() {
-
-        $problem = new ProjectEuler\Problems\One();
-        $this->assertEquals(23, $problem->sumMultiplesOf3And5Below(10));
-
-    }
+class TwoTest extends TestCase {
 
     public function testFibonacci() {
 
@@ -27,4 +22,5 @@ class ProblemsTest extends TestCase {
         $this->assertEquals(44, $problem->sumEvenFibonacciNumbersUnder(89));
     
     }
+    
 }
