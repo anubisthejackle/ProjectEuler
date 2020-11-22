@@ -6,7 +6,7 @@ class ProblemsTest extends TestCase {
 
     private $problems;
 
-    public function setUp() {
+    protected function setUp(): void {
 
         $this->problems = new ProjectEuler\Problems();
     
@@ -21,8 +21,16 @@ class ProblemsTest extends TestCase {
 
     public function testFibonacci() {
 
-        $this->assertEquals(44, $this->problems->sumEvenFibonacciNumbersUnder(89));
-
+        $this->assertEquals(1, $this->problems->getFibonacciNumber(1));
+        $this->assertEquals(1, $this->problems->getFibonacciNumber(2));
+        $this->assertEquals(2, $this->problems->getFibonacciNumber(3));
+        $this->assertEquals(3, $this->problems->getFibonacciNumber(4));
+        
     }
+
+    public function testFibonacciSum() {
+
+        $this->assertEquals(44, $this->problems->sumEvenFibonacciNumbersUnder(89));
     
+    }
 }

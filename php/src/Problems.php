@@ -16,4 +16,37 @@ class Problems {
         return $sum;
     }
 
+    public function getFibonacciNumber($number){
+        if($number == 0){
+            return 0;
+        }
+
+        if($number == 1){
+            return 1;
+        }
+        
+        return $this->getFibonacciNumber($number - 1) + $this->getFibonacciNumber($number - 2);
+    }
+
+    public function sumEvenFibonacciNumbersUnder($number){
+
+        $sum = 0;
+        for($i = 0; $i < $number; $i++){
+            $fib = $this->getFibonacciNumber($i);
+            
+            if($fib > $number){
+                break;
+            }
+
+            if($fib % 2 != 0){
+                continue;
+            }
+
+            $sum += $fib;
+            
+        }
+
+        return $sum;
+    }
+
 }
