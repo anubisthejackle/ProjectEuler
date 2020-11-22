@@ -16,6 +16,7 @@ class Problem implements Command {
         
         if(!is_array($problem)){
             $problem->run();
+            return;
         }
         
         foreach($problem as $toRun){
