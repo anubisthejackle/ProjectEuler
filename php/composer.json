@@ -1,0 +1,15 @@
+{
+    "name": "anubis/projecteuler",
+    "authors": [
+        {
+            "name": "Travis Weston",
+            "email": "tweston2013@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4":{
+            "Problem\\": "src/"
+        }
+    }
+}
