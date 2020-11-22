@@ -16,7 +16,7 @@ class CliTest extends TestCase {
     public function testConvertingIntegerToWord() {
 
         $args = ["./pecli","--problem","1"];
-        $cli = new ProjectEuler\Cli($args);
+        $cli = new ProjectEuler\Cli\Command\Problem($args);
 
         $this->assertEquals('One', $cli->convertIntegerToWord(1));
         $this->assertEquals('One hundred', $cli->convertIntegerToWord(100));
@@ -27,7 +27,7 @@ class CliTest extends TestCase {
     public function testConvertWordToClassname() {
 
         $args = ["./pecli","--problem","1"];
-        $cli = new ProjectEuler\Cli($args);
+        $cli = new ProjectEuler\Cli\Command\Problem($args);
 
         $this->assertEquals('One', $cli->convertWordToClassName('One'));
         $this->assertEquals('OneHundred', $cli->convertWordToClassName('One hundred'));
@@ -40,14 +40,19 @@ class CliTest extends TestCase {
         $args = ["./pecli","--problem","1"];
         $cli = new ProjectEuler\Cli($args);
 
-        $problem = $cli->getProblem();
+        $args = $cli->getArgs();
+
+        $command = new ProjectEuler\Cli\Command\Problem($args);
+        $problem = $command->getProblem();
 
         $this->assertInstanceOf(ProjectEuler\Problem\One::class, $problem);
 
         $args = ["./pecli","--problem","2"];
         $cli = new ProjectEuler\Cli($args);
+        $args = $cli->getArgs();
 
-        $problem = $cli->getProblem();
+        $command = new ProjectEuler\Cli\Command\Problem($args);
+        $problem = $command->getProblem();
 
         $this->assertInstanceOf(ProjectEuler\Problem\Two::class, $problem);
 
@@ -58,14 +63,20 @@ class CliTest extends TestCase {
         $args = ["./pecli","--problem","1"];
         $cli = new ProjectEuler\Cli($args);
 
-        $problem = $cli->getProblem();
+        $args = $cli->getArgs();
+
+        $command = new ProjectEuler\Cli\Command\Problem($args);
+        $problem = $command->getProblem();
 
         $this->assertInstanceOf(ProjectEuler\Problem::class, $problem);
 
         $args = ["./pecli","--problem","2"];
         $cli = new ProjectEuler\Cli($args);
 
-        $problem = $cli->getProblem();
+        $args = $cli->getArgs();
+
+        $command = new ProjectEuler\Cli\Command\Problem($args);
+        $problem = $command->getProblem();
 
         $this->assertInstanceOf(ProjectEuler\Problem::class, $problem);
 
@@ -77,7 +88,10 @@ class CliTest extends TestCase {
         $args = ["./pecli","--problem","1"];
         $cli = new ProjectEuler\Cli($args);
 
-        $problem = $cli->getProblem();
+        $args = $cli->getArgs();
+
+        $command = new ProjectEuler\Cli\Command\Problem($args);
+        $problem = $command->getProblem();
 
         $problem->run();
 
@@ -87,8 +101,10 @@ class CliTest extends TestCase {
 
         $args = ["./pecli","--problem","1,2"];
         $cli = new ProjectEuler\Cli($args);
+        $args = $cli->getArgs();
 
-        $problems = $cli->getProblem();
+        $command = new ProjectEuler\Cli\Command\Problem($args);
+        $problems = $command->getProblem();
 
         $this->assertIsArray($problems);
         $this->assertInstanceOf(ProjectEuler\Problem\One::class, $problems[0]);
