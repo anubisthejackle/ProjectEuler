@@ -83,4 +83,35 @@ class CliTest extends TestCase {
 
     }
 
+    public function testCsvNumbersCreateArrayOfProblems(){
+
+        $args = ["./pecli","--problem","1,2"];
+        $cli = new ProjectEuler\Cli($args);
+
+        $problems = $cli->getProblem();
+
+        $this->assertIsArray($problems);
+        $this->assertInstanceOf(ProjectEuler\Problem\One::class, $problems[0]);
+        $this->assertInstanceOf(ProjectEuler\Problem\Two::class, $problems[1]);
+
+    }
+
+    public function testActionFoundInCommandsArray() {
+
+        $args = ["./pecli","--problem","1"];
+        $cli = new ProjectEuler\Cli($args);
+
+        $this->assertTrue($cli->validCommandFound());
+    }
+
+    public function testSendingCommandForProblemReturnsCorrectOutput() {
+        
+        $this->expectOutputString('Problem #1: "Sum Multiples of 3 and 5 Below 1000" -- 233168' . PHP_EOL);
+
+        $args = ["./pecli","--problem","1"];
+        $cli = new ProjectEuler\Cli($args);
+        $cli->run();
+
+    }
+
 }

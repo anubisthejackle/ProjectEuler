@@ -7,6 +7,10 @@ use GetOpt\Option;
 class Cli {
 
     protected $args;
+    protected $commands = [
+        'problem',
+        'name'
+    ];
 
     public function __construct($args){
      
@@ -18,7 +22,43 @@ class Cli {
         $getopt->process($args);
 
         $this->args = $getopt->getOptions();
-    
+        
+    }
+
+    public function run() {
+
+        if(!$this->validCommandFound()){
+            echo 'Correct usage is ' . $this->args[0] . ' [--problem 1[,2] | --name $number';
+            return;
+        }
+        
+        $problem = $this->getProblem();
+        
+        if(!is_array($problem)){
+            $problem->run();
+        }
+        
+        foreach($problem as $toRun){
+            $toRun->run();
+        }
+
+    }
+
+    public function validCommandFound() {
+        
+        $keys = array_keys($this->args);
+        
+        $exists = false;
+        foreach($this->commands as $command){
+        
+            if($exists == true){
+                break;
+            }
+        
+            $exists = in_array($command, $keys);
+        }
+        
+        return $exists;
     }
 
     public function convertIntegerToWord($number){
@@ -32,13 +72,29 @@ class Cli {
         $word = ucwords($word);
         $word = str_replace([' ','-'], '', $word);
         return $word;
-
     }
 
     public function getProblem(){
-        $word = $this->convertIntegerToWord($this->args['problem']);
-        $class = 'ProjectEuler\\Problem\\' . $this->convertWordToClassName($word);
 
+        $problemSet = $this->args['problem'];
+        
+        if(strpos($problemSet, ',') === false){
+            return $this->_generateProblem($problemSet);
+        }
+
+        $return = [];
+        $problems = explode(',', $problemSet);
+        foreach($problems as $problem){
+            $return[] = $this->_generateProblem($problem);
+        }
+
+        return $return;
+        
+    }
+
+    private function _generateProblem($problem) {
+        $word = $this->convertIntegerToWord($problem);
+        $class = 'ProjectEuler\\Problem\\' . $this->convertWordToClassName($word);
         return new $class();
     }
 
