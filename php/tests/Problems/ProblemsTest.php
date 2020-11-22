@@ -8,14 +8,14 @@ class ProblemsTest extends TestCase {
 
     protected function setUp(): void {
 
-        $this->problems = new ProjectEuler\Problems();
+        $this->problems = new ProjectEuler\Problems\Two();
     
     }
 
     public function testMultiplesOf3And5() {
 
-
-        $this->assertEquals(23, $this->problems->sumMultiplesOf3And5Below(10));
+        $problem = new ProjectEuler\Problems\One();
+        $this->assertEquals(23, $problem->sumMultiplesOf3And5Below(10));
 
     }
 

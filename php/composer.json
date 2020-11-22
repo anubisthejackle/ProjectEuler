@@ -6,7 +6,9 @@
             "email": "tweston2013@gmail.com"
         }
     ],
-    "require": {},
+    "require": {
+        "ulrichsg/getopt-php": "^3.4"
+    },
     "autoload": {
         "psr-4":{
             "ProjectEuler\\": "src/"

@@ -1,20 +1,10 @@
 <?php
 
-namespace ProjectEuler;
+namespace ProjectEuler\Problems;
 
-class Problems {
+use ProjectEuler\Problem;
 
-    public function sumMultiplesOf3And5Below($max){
-        $sum = 0;
-        foreach(range(0, $max-1) as $number){
-            if(!($number % 3 == 0) && !($number % 5 == 0)){
-                continue;
-            }
-
-            $sum += $number;
-        }
-        return $sum;
-    }
+class Two implements Problem {
 
     public function getFibonacciNumber($number){
         if($number == 0){
@@ -47,6 +37,12 @@ class Problems {
         }
 
         return $sum;
+    }
+
+    public function run(){
+
+        echo 'Problem #2: "Sum Even Fibonacci Numbers Below 4,000,000" -- ' . $this->sumEvenFibonacciNumbersUnder(4000000) . PHP_EOL;
+
     }
 
 }

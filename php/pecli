@@ -1,0 +1,25 @@
+#!/usr/bin/php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$cli = new ProjectEuler\Cli($argv);
+
+if(!array_key_exists('problem', $cli->getArgs())){
+    die('must pass problem argument');
+}
+
+$problem = $cli->getProblem();
+
+if(is_array($problem)){
+
+    foreach($problem as $toRun){
+
+        $toRun->run();
+
+    }
+
+}else{
+
+    $problem->run();
+
+}
