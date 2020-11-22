@@ -1,8 +1,8 @@
 <?php
 
-namespace Problem;
+namespace ProjectEuler;
 
-class One {
+class Problems {
 
     public function sumMultiplesOf3And5Below($max){
         $sum = 0;
